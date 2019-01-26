@@ -3,7 +3,7 @@
 
 ## GoogleAppEngine
 
-Basic sample to deploy dummy apps into Google Cloud App Engine. See [google Guides](doc/googleGuides.md) as on boarding materia
+Basic sample to deploy dummy apps into Google Cloud App Engine. See [google Guides](doc/googleGuides.md) as on boarding material
 
 Code Example:
 
@@ -66,9 +66,9 @@ Debug:
 ```shel
 gcloud app logs tail -s default
 gcloud app browse
-
 ```
 
 
 Running app [https://applauncher.appspot.com](https://applauncher.appspot.com)
+
 Testing Interface [https://applauncher.appspot.com/test](https://applauncher.appspot.com/test)

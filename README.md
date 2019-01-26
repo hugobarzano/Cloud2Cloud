@@ -3,7 +3,7 @@
 
 ## GoogleAppEngine
 
-Basic sample to deploy dummy apps into Google Cloud App Engine. See [google Guides](doc/google Guides.md) as on boarding materia
+Basic sample to deploy dummy apps into Google Cloud App Engine. See [google Guides](doc/googleGuides.md) as on boarding materia
 
 Code Example:
 

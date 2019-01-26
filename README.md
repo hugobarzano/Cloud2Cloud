@@ -3,7 +3,7 @@
 
 ## GoogleAppEngine
 
-Basic sample to deploy dummy apps into Google Cloud App Engine. See [google Guides](./doc/google Guides.md) as on boarding materia
+Basic sample to deploy dummy apps into Google Cloud App Engine. See [google Guides](doc/google Guides.md) as on boarding materia
 
 Code Example:
 
@@ -70,4 +70,5 @@ gcloud app browse
 ```
 
 
-Running app [https://applauncher.appspot.com/](This is a basic sample to deploy dummy apps into Google Cloud App Engine. See [google Guides](./doc/google Guides.md) as on boarding material)
+Running app [https://applauncher.appspot.com](https://applauncher.appspot.com)
+Testing Interface [https://applauncher.appspot.com/test](https://applauncher.appspot.com/test)

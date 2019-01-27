@@ -1,4 +1,4 @@
-FROM google/rbe-ubuntu16-04
+FROM ubuntu
 
 COPY app /
 EXPOSE 80

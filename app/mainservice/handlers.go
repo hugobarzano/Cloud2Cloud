@@ -31,7 +31,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 		}
 
-		indexTemplete, _ = template.ParseFiles("mainservice/templates/index.tmpl")
+		indexTemplete, _ = template.ParseFiles("mainservice/templates/index.tmpl","mainservice/templates/header.tmpl")
 
 		indexTemplete.Execute(w, userdata)
 	}

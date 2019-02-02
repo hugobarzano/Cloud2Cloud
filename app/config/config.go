@@ -32,7 +32,7 @@ func InitConfig() {
 	config = &AppConfiguration{
 
 		Mongodb: MongodbConfig{
-			URI: "mongodb://localhost:27017/app",
+			URI: "mongodb://cesarcorp:cesarcorp01@ds049624.mlab.com:49624/cesarcorpdb",
 		},
 	}
 	goconfig.Read(config)

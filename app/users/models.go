@@ -2,6 +2,7 @@ package users
 
 import (
 	"app/config"
+	"app/constans"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"log"
@@ -26,7 +27,7 @@ func createUser(user *User) (*User, error) {
 
 	//session.SetMode(mgo.Monotonic, true)
 
-	c := session.DB("app").C("users")
+	c := session.DB(constans.DATABASE).C("users")
 	err = c.Insert(user)
 	if err != nil {
 		log.Fatal(err)
@@ -45,7 +46,7 @@ func getUser(username string) (*User, error) {
 
 	//session.SetMode(mgo.Monotonic, true)
 
-	c := session.DB("app").C("users")
+	c := session.DB(constans.DATABASE).C("users")
 	result := &User{}
 	err = c.Find(bson.M{"username": username}).One(&result)
 	if err != nil {
@@ -65,7 +66,7 @@ func deleteUser(username string) (*User, error) {
 		return nil, err
 	}
 	session, err := mgo.Dial(config.Mongodb.URI)
-	c := session.DB("app").C("users")
+	c := session.DB(constans.DATABASE).C("users")
 	err = c.RemoveId(user.ID)
 	if err != nil {
 		log.Fatal(err)

@@ -1,13 +1,13 @@
 package main
 
 import (
-	"app/mainservice"
-	"app/minerset"
-	"app/users"
+	"app/api"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
+	"github.com/gorilla/handlers"
+
 )
 
 
@@ -15,25 +15,19 @@ import (
 func main() {
 
 	port := os.Getenv("PORT")
-	port="80"
+	port="80" //HARDCODE
 	if port == "" {
 		log.Fatal("$PORT must be set")
 	}
 
+	fmt.Println("API End-points::")
+	router := api.NewRouter()
 
-	http.HandleFunc("/", mainservice.Index)
-	http.HandleFunc("/login", users.LoginHandler)
-	http.HandleFunc("/signin", users.SignInHandler)
-	http.HandleFunc("/logout", users.LogOutHandler)
-	http.HandleFunc("/create", minerset.CreateMinersetHandler)
-	http.HandleFunc("/list", minerset.ListMinersetHandler)
-	http.HandleFunc("/push", minerset.PushToMinerSetHandler)
+	allowedOrigins := handlers.AllowedOrigins([]string{"*"})
+	allowedMethods := handlers.AllowedMethods([]string{"GET", "POST", "DELETE", "PUT"})
+	fmt.Println("Listenig on ::"+port)
 
+	// Launch server with CORS validations
+	log.Fatal(http.ListenAndServe(":" + port, handlers.CORS(allowedOrigins, allowedMethods)(router)))
 
-
-	fmt.Println("ListenAndServe on :"+port)
-	err := http.ListenAndServe(":"+ port, nil) // setting listening port
-	if err != nil {
-		log.Fatal("ListenAndServe: ", err)
-	}
 }

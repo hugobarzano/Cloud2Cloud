@@ -37,7 +37,7 @@ func CreateMinersetHandler(w http.ResponseWriter, r *http.Request) {
 		mine:=&Minerset{ID:uuid.NewV4().String(),
 			Title:strings.Join(r.Form["title"],""),
 			Owner:session.Values["username"].(string),
-			Url:"/push/?title="+strings.Join(r.Form["title"],""),
+			Url:"/push/"+strings.Join(r.Form["title"],""),
 			Date:time.Now()	}
 
 
@@ -81,11 +81,11 @@ func PushToMinerSetHandler(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 		vars := mux.Vars(r)
+		title := vars["title"]
 		fmt.Print(vars)
 
-		minetitle, _ := r.URL.Query()["title"]
 
-		mine,err:=getMinerset(string(minetitle[0]))
+		mine,err:=getMinerset(title)
 		fmt.Print(mine)
 		if err!=nil{
 			log.Fatal(err)

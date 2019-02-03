@@ -1,0 +1,107 @@
+<html>
+{{ template "header" }}
+
+
+<body>
+  <div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+
+ {{if .Username}}
+       <div class="sidebar-heading">Welcome {{.Username}}!!</div>
+       <div class="list-group list-group-flush">
+           <a href="/create" class="list-group-item list-group-item-action bg-light">Create</a>
+           <a href="/list" class="list-group-item list-group-item-action bg-light">List</a>
+           <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+           <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+           <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+           <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+           <a href="/logout" class="list-group-item list-group-item-action bg-light">Log Out</a>
+
+ {{ else }}
+        <div class="sidebar-heading">YOU ARE OUT!!</div>
+        <div class="list-group list-group-flush">
+           <a href="/login" class="list-group-item list-group-item-action bg-light">Login</a>
+           <a href="/signin" class="list-group-item list-group-item-action bg-light">Join us!</a>
+           <a href="/" class="list-group-item list-group-item-action bg-light">Help!</a>
+ {{end}}
+      </div>
+    </div>
+
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+    {{ template "navbar" }}
+
+    {{ template "content" }}
+
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+
+  <style type="text/css" media="screen">
+
+                body {
+                  overflow-x: hidden;
+                }
+
+                #sidebar-wrapper {
+                  min-height: 100vh;
+                  margin-left: -15rem;
+                  -webkit-transition: margin .25s ease-out;
+                  -moz-transition: margin .25s ease-out;
+                  -o-transition: margin .25s ease-out;
+                  transition: margin .25s ease-out;
+                }
+
+                #sidebar-wrapper .sidebar-heading {
+                  padding: 0.875rem 1.25rem;
+                  font-size: 1.2rem;
+                }
+
+                #sidebar-wrapper .list-group {
+                  width: 15rem;
+                }
+
+                #page-content-wrapper {
+                  min-width: 100vw;
+                }
+
+                #wrapper.toggled #sidebar-wrapper {
+                  margin-left: 0;
+                }
+
+                @media (min-width: 768px) {
+                  #sidebar-wrapper {
+                    margin-left: 0;
+                  }
+
+                  #page-content-wrapper {
+                    min-width: 0;
+                    width: 100%;
+                  }
+
+                  #wrapper.toggled #sidebar-wrapper {
+                    margin-left: -15rem;
+                  }
+                }
+  </style>
+
+</body>
+</html>

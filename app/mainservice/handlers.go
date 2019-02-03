@@ -12,10 +12,17 @@ var (
 	// key must be 16, 24 or 32 bytes long (AES-128, AES-192 or AES-256)
 	key = []byte("super-secret-key")
 	store = sessions.NewCookieStore(key)
-)
+	templates = []string{
+			"mainservice/templates/index2.tmpl",
+			"mainservice/templates/header.tmpl",
+			"mainservice/templates/content.tmpl",
+			"mainservice/templates/navbar.tmpl"}
+	)
 
 var indexTemplete *template.Template
 var userdata users.User
+
+
 func Index(w http.ResponseWriter, r *http.Request) {
 	session, _ := store.Get(r, "cookie-name")
 
@@ -31,7 +38,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 		}
 
-		indexTemplete, _ = template.ParseFiles("mainservice/templates/index.tmpl","mainservice/templates/header.tmpl")
+		indexTemplete, _ = template.ParseFiles(templates... )
 
 		indexTemplete.Execute(w, userdata)
 	}
